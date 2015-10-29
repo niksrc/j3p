@@ -3,7 +3,8 @@
   "version": "0.0.0",
   "private": true,
   "scripts": {
-    "start": "node ./bin/www"
+    "start": "node ./bin/www",
+    "test": "mocha"
   },
   "dependencies": {
     "body-parser": "~1.13.2",
@@ -17,5 +18,8 @@
     "pg-hstore": "^2.3.2",
     "sequelize": "^3.13.0",
     "serve-favicon": "~2.3.0"
+  },
+  "devDependencies": {
+    "should": "^7.1.1"
   }
 }
