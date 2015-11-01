@@ -10,8 +10,8 @@ var router = express.Router();
 
 /* GET items listing. */
 router.get('/items/', function(req, res, next) {
-  limit = req.query.limit || 20;
-  offset = req.query.offset || 0;
+  var limit = req.query.limit || 20;
+  var offset = req.query.offset || 0;
 
   Ethnic.findAll({
     limit: limit,
@@ -21,6 +21,19 @@ router.get('/items/', function(req, res, next) {
   .then(function(items){
     res.send(items);
   })
+});
+
+/* GET item with a given id. */
+router.get('/items/:id', function(req, res, next) {
+  var id = req.params.id;
+
+  if(id !== undefined)
+    Ethnic.findById(id)
+    .then(function(item){
+      res.send(item);
+    })
+  else
+    res.end();
 });
 
 module.exports = router;
