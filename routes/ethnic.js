@@ -1,8 +1,23 @@
 var express = require('express');
 var multer = require('multer')
 var Ethnic = require('../models/ethnic');
+var crypto = require('crypto');
+var mime = require('mime');
 var router = express.Router();
 
+/* Multer config */
+var storage = multer.diskStorage({
+  destination: function (req, file, cb) {
+    cb(null, 'public/images/ethnic/')
+  },
+  filename: function (req, file, cb) {
+    crypto.pseudoRandomBytes(16, function (err, raw) {
+      cb(null, raw.toString('hex') + Date.now() + '.' + mime.extension(file.mimetype));
+    });
+  }
+})
+
+var upload = multer({ storage: storage })
 /*
 * These routes are for items present in catalogs.
 *
@@ -35,5 +50,18 @@ router.get('/items/:id', function(req, res, next) {
   else
     res.end();
 });
+
+router.post('/items/', upload.single('pic') , function(req, res, next) {
+  req.body.pic = req.file.filename;
+
+  Ethnic.saveMe(req.body)
+  .then(function(){
+    res.send({'error': false})
+  })
+  .catch(function(){
+    res.send({'error': true})
+  })
+
+})
 
 module.exports = router;
