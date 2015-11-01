@@ -1,7 +1,7 @@
 var Sequelize = require('sequelize')
 var db = require('../lib/db');
 
-var Catalog = db.define('catalog', {
+var Ethnic = db.define('ethnic', {
   title: Sequelize.STRING,
   order: Sequelize.BIGINT,
   pic: Sequelize.STRING,
@@ -9,7 +9,7 @@ var Catalog = db.define('catalog', {
 },{
   classMethods: {
     getMaxOrder: function() {
-      return Catalog.max('order');
+      return Ethnic.max('order');
     },
     /*
     * Reorder increments or decrements items between prev and new order
@@ -20,14 +20,14 @@ var Catalog = db.define('catalog', {
       var direction = newOrder < prevOrder
       var inc = (direction)? ' + ':' - ';
       var between = [prevOrder,newOrder].sort();
-      var query = 'UPDATE catalogs SET "order" = "order"' + inc + 1;
+      var query = 'UPDATE ethnics SET "order" = "order"' + inc + 1;
       query += ' where "order" BETWEEN ' + between.join(' AND ');
       console.log(query);
 
       return db.query(query)
       .then(function(response){
 
-        return Catalog.update({
+        return Ethnic.update({
           order: newOrder
         },{
           where:{
@@ -41,16 +41,16 @@ var Catalog = db.define('catalog', {
 
     },
     saveMe: function(attributes) {
-      return Catalog
+      return Ethnic
         .getMaxOrder()
         .then(function(value){
           value = value || 0;
           attributes.order = value+1;
-          return Catalog.create(attributes);
+          return Ethnic.create(attributes);
         })
     }
   }
 })
 
-Catalog.sync({});
-module.exports = Catalog;
+Ethnic.sync({});
+module.exports = Ethnic;

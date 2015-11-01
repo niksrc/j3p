@@ -1,13 +1,13 @@
 var assert = require('assert');
 require('dotenv').load();
 
-var Catalog = require('../models/catalog');
+var Ethnic = require('../models/ethnic');
 
 beforeEach(function(){
-  return Catalog
+  return Ethnic
     .truncate()
     .then(function(){
-      return Catalog.create({
+      return Ethnic.create({
         title: 'sample',
         order: 1,
         pic: 'sample.jpg',
@@ -18,9 +18,9 @@ beforeEach(function(){
     });
 });
 
-describe('Catalog', function() {
+describe('Ethnic', function() {
   it('table should exists', function() {
-    return Catalog.findAll({
+    return Ethnic.findAll({
       where: {
         title: 'sample'
       }
@@ -30,7 +30,7 @@ describe('Catalog', function() {
   });
 
   it('#getMaxOrder should have max value', function() {
-    return Catalog
+    return Ethnic
       .getMaxOrder()
       .then(function(max) {
         assert(max === 1);
@@ -38,10 +38,10 @@ describe('Catalog', function() {
   });
 
   it('#getMaxOrder should return NaN when no row is present', function() {
-    return Catalog
+    return Ethnic
       .truncate()
       .then(function() {
-        return Catalog
+        return Ethnic
           .getMaxOrder()
           .then(function(max) {
             assert(max !== max);
@@ -50,7 +50,7 @@ describe('Catalog', function() {
   });
 
   it('#saveMe should save and increment order properly', function() {
-    return Catalog.saveMe({
+    return Ethnic.saveMe({
       title: 'new',
       pic: 'sample2.jpg',
       data: {
@@ -58,12 +58,12 @@ describe('Catalog', function() {
       }
     }).then(function() {
 
-      return Catalog.find({
+      return Ethnic.find({
         where: {
           title: 'new'
         }
-      }).then(function(catalog) {
-          assert(catalog.order == 2);
+      }).then(function(ethnic) {
+          assert(ethnic.order == 2);
       })
 
     });
@@ -71,7 +71,7 @@ describe('Catalog', function() {
   });
 
   it('#reorder should arrange orders sequentially', function() {
-    return Catalog.bulkCreate([{
+    return Ethnic.bulkCreate([{
       title: 'new2',
       pic: 'sample2.jpg',
       order: 2,
@@ -100,15 +100,15 @@ describe('Catalog', function() {
       name: 'world'
       }
     }]).then(function() {
-      return Catalog.find({
+      return Ethnic.find({
         where:{
           order: 4
         }
       }).then(function(item) {
-        return Catalog
+        return Ethnic
           .reorder(item.id, item.order, 1)
           .then(function() {
-            return Catalog
+            return Ethnic
               .findAll({
                 order:['order']
               })
