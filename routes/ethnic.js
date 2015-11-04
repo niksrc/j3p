@@ -56,12 +56,27 @@ router.post('/items/', upload.single('pic') , function(req, res, next) {
 
   Ethnic.saveMe(req.body)
   .then(function(){
-    res.send({'error': false})
+    res.send({'error': false});
   })
   .catch(function(){
-    res.send({'error': true})
+    res.send({'error': true});
   })
 
-})
+});
+
+router.post('/items/reorder', function(req, res, next) {
+  var id = req.body.id;
+  var prevOrder = req.body.prevOrder;
+  var newOrder = req.body.newOrder;
+
+  Ethnic.reorder(id, prevOrder, newOrder)
+  .then(function(){
+    res.send({'error': false});
+  })
+  .catch(function(){
+    res.send({'error': true});
+  })
+
+});
 
 module.exports = router;
