@@ -4,7 +4,7 @@ var Ethnic = require('../models/ethnic');
 var crypto = require('crypto');
 var mime = require('mime');
 var router = express.Router();
-
+var fs = require('fs');
 /* Multer config */
 var storage = multer.diskStorage({
   destination: function (req, file, cb) {
@@ -78,5 +78,34 @@ router.post('/items/reorder', function(req, res, next) {
   })
 
 });
+
+router.post('/items/:id', upload.single('pic') , function(req, res, next) {
+  var id = req.params.id;
+
+  Ethnic.findById(id)
+  .then(function(item){
+      if(req.file !== undefined){
+        req.body.pic = req.file.filename;
+        fs.unlink('public/images/ethnic/'+item.pic,function(err){
+          console.log(err);
+        });
+      }
+    
+      Ethnic.update(req.body,{
+        where:{
+          id:item.id
+        }
+      })
+      .then(function(affectedRows){
+        if(affectedRows == 1)
+          res.send({'error': false});
+        else
+          res.send({'error': true});
+      })
+  
+  })
+
+});
+
 
 module.exports = router;
