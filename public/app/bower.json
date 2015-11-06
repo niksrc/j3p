@@ -1,0 +1,20 @@
+{
+  "name": "j3p-app",
+  "version": "0.1.0",
+  "homepage": "https://github.com/niksrc/j3p",
+  "authors": [
+    "Nikhil Srivastava <niksrc@gmail.com>"
+  ],
+  "main": "j3p.module.js",
+  "moduleType": [
+    "globals"
+  ],
+  "license": "MIT",
+  "dependencies": {
+    "angular": "~1.4.7",
+    "angular-animate": "~1.4.7",
+    "angular-route": "~1.4.7",
+    "angular-sortable-view": "~0.0.13",
+    "ng-file-upload": "~9.1.2"
+  }
+}
