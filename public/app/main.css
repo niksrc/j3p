@@ -210,6 +210,34 @@ small screens.
         }
 
 
+
+
+.toast {
+  position: absolute;
+  right: 10px;
+  top: 20px;
+  text-align: center;
+  border-radius: 2px;
+  border: 1px solid #222;
+  padding: 2px 18px;
+  margin-top: -60px;
+  -webkit-transition: opacity 0.2s, visibility 0.2s, margin-top 0s 0.2s;
+          transition: opacity 0.2s, visibility 0.2s, margin-top 0s 0.2s;
+  opacity: 0;
+  visibility: hidden;
+  color: white;
+  background: #222;
+}
+
+.toast--show {
+  -webkit-transition: opacity 0.2s, margin-top 0.4s;
+          transition: opacity 0.2s, margin-top 0.4s;
+  opacity: 0.9;
+  visibility: visible;
+  margin-top: 0;
+}
+
+
 /* -- Responsive Styles (Media Queries) ------------------------------------- */
 
 /*
