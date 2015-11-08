@@ -31,7 +31,7 @@ router.get('/items/', function(req, res, next) {
   Ethnic.findAll({
     limit: limit,
     offset: offset,
-    order:['order']
+    order:[['order', 'DESC']]
   })
   .then(function(items){
     res.send(items);
