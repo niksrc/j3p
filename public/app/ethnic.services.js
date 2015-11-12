@@ -54,9 +54,13 @@
         })
     }
 
-    function remove(){
+    function remove(id, order){
       return http
-        .delete(apiUrl+id);
+        .delete(apiUrl+id, {
+          data: {
+            order: order
+          }
+        });
     }
 
     function reorder(params){

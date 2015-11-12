@@ -4,9 +4,9 @@
     .module('j3p')
     .config(config);
 
-    config.$inject = ['$routeProvider'];
+    config.$inject = ['$routeProvider', '$httpProvider'];
 
-    function config($routeProvider) {
+    function config($routeProvider, $httpProvider) {
       $routeProvider
         .when('/',{
           templateUrl: 'app/views/about.html',
@@ -41,6 +41,11 @@
         .otherwise({
           redirectTo: '/'
         })
+
+
+        $httpProvider.defaults.headers.delete = { 
+          'Content-Type': 'application/json;charset=utf-8' 
+        };
     }
 
 })();

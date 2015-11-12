@@ -107,5 +107,17 @@ router.post('/items/:id', upload.single('pic') , function(req, res, next) {
 
 });
 
+router.delete('/items/:id', function(req, res, next) {
+  var id = req.params.id;
+  var order = +req.body.order;
+
+  Ethnic.remove(id, order)
+    .then(function(affectedRows){
+      if(affectedRows == 1)
+        res.send({'error': false});
+      else
+        res.send({'error': true});
+    })
+  })
 
 module.exports = router;
