@@ -264,6 +264,13 @@ small screens.
     margin: 2px;
 }
 
+.text-center {
+    text-align: center;
+}
+
+legend {
+    border-bottom: 0px !important; 
+}
 
 /* -- Responsive Styles (Media Queries) ------------------------------------- */
 
