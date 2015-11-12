@@ -48,6 +48,24 @@ var Ethnic = db.define('ethnic', {
           attributes.order = value+1;
           return Ethnic.create(attributes);
         })
+    },
+    remove: function(id, order) {
+      return Ethnic
+        .getMaxOrder()
+        .then(function(value){
+          value = value || 0;
+          value += 1;
+          return Ethnic
+            .reorder(id, order, value)
+            .then(function(response){
+              return Ethnic.destroy({
+                where: {
+                  order: value
+                }
+              })
+            })
+        })
+        
     }
   }
 })
