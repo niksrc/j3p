@@ -19,6 +19,7 @@ beforeEach(function(){
 });
 
 describe('Ethnic', function() {
+  this.timeout(0)
   it('table should exists', function() {
     return Ethnic.findAll({
       where: {
