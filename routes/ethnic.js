@@ -70,8 +70,11 @@ router.post('/items/reorder', function(req, res, next) {
   var newOrder = req.body.newOrder;
 
   Ethnic.reorder(id, prevOrder, newOrder)
-  .then(function(){
-    res.send({'error': false});
+  .then(function(affectedRows){
+    if(affectedRows == 1)
+      res.send({'error': false});
+    else
+      res.send({'error': true});
   })
   .catch(function(){
     res.send({'error': true});
