@@ -12,7 +12,7 @@
     var service = {
       query: query,
       get: get,
-      edit: edit,
+      update: edit,
       save: save,
       remove: remove,
       reorder: reorder
