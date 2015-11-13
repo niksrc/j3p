@@ -22,7 +22,6 @@ var Mens = db.define('mens', {
       var between = [prevOrder,newOrder].sort();
       var query = 'UPDATE mens SET "order" = "order"' + inc + 1;
       query += ' where "order" BETWEEN ' + between.join(' AND ');
-      console.log(query);
 
       return db.query(query)
       .then(function(response){
@@ -48,6 +47,24 @@ var Mens = db.define('mens', {
           attributes.order = value+1;
           return Mens.create(attributes);
         })
+    },
+    remove: function(id, order) {
+      return Mens
+        .getMaxOrder()
+        .then(function(value){
+          value = value || 0;
+          value += 1;
+          return Mens
+            .reorder(id, order, value)
+            .then(function(response){
+              return Mens.destroy({
+                where: {
+                  order: value
+                }
+              })
+            })
+        })
+        
     }
   }
 })

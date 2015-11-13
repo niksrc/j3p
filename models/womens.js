@@ -22,7 +22,6 @@ var Womens = db.define('womens', {
       var between = [prevOrder,newOrder].sort();
       var query = 'UPDATE womens SET "order" = "order"' + inc + 1;
       query += ' where "order" BETWEEN ' + between.join(' AND ');
-      console.log(query);
 
       return db.query(query)
       .then(function(response){
@@ -48,6 +47,24 @@ var Womens = db.define('womens', {
           attributes.order = value+1;
           return Womens.create(attributes);
         })
+    },
+    remove: function(id, order) {
+      return Womens
+        .getMaxOrder()
+        .then(function(value){
+          value = value || 0;
+          value += 1;
+          return Womens
+            .reorder(id, order, value)
+            .then(function(response){
+              return Womens.destroy({
+                where: {
+                  order: value
+                }
+              })
+            })
+        })
+        
     }
   }
 })
