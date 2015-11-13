@@ -23,7 +23,8 @@
     vm.reorder = reorder;
     vm.refresh = fetch;
     vm.remove = remove;
-    console.log(Ethnic);
+    fetch();
+
     function fetch(){
       Ethnic
         .query(vm.params)
@@ -33,9 +34,24 @@
           vm.items = [];
         })
     }
-    fetch();
-    function reorder(params){
-      //Todo
+    function reorder(item, prevIndex, newIndex){
+      var diff = prevIndex - newIndex;
+      var order = diff + +item.order;
+      Ethnic
+        .reorder({
+          id: item.id,
+          prevOrder: +item.order,
+          newOrder: order
+        })
+        .then(function(response){
+          if(!response.error){
+            $scope.$emit('notify','Reordered');
+          }else{
+            $scope.$emit('notify','Unable to reorder');
+            fetch();
+          }
+
+        })
     }
 
     function remove(id, index, order){

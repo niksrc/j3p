@@ -65,9 +65,7 @@
 
     function reorder(params){
       return http
-        .post(apiUrl+'reorder',{
-          data: params
-        })
+        .post(apiUrl+'reorder',params)
     }
 
   }  
