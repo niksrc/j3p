@@ -36,12 +36,11 @@
     }
     function reorder(item, prevIndex, newIndex){
       var diff = prevIndex - newIndex;
-      var order = diff + +item.order;
+
       Ethnic
         .reorder({
           id: item.id,
-          prevOrder: +item.order,
-          newOrder: order
+          diff: diff
         })
         .then(function(response){
           if(!response.error){

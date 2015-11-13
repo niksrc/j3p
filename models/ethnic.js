@@ -22,7 +22,6 @@ var Ethnic = db.define('ethnic', {
       var between = [prevOrder,newOrder].sort();
       var query = 'UPDATE ethnics SET "order" = "order"' + inc + 1;
       query += ' where "order" BETWEEN ' + between.join(' AND ');
-      console.log(query);
 
       return db.query(query)
       .then(function(response){

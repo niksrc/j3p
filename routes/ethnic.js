@@ -66,18 +66,21 @@ router.post('/items/', upload.single('pic') , function(req, res, next) {
 
 router.post('/items/reorder', function(req, res, next) {
   var id = req.body.id;
-  var prevOrder = req.body.prevOrder;
-  var newOrder = req.body.newOrder;
+  var diff = req.body.diff;
 
-  Ethnic.reorder(id, prevOrder, newOrder)
-  .then(function(affectedRows){
-    if(affectedRows == 1)
-      res.send({'error': false});
-    else
-      res.send({'error': true});
-  })
-  .catch(function(){
-    res.send({'error': true});
+  Ethnic.findById(id)
+  .then(function(item) {
+
+    return Ethnic.reorder(id, item.order, +item.order + diff)
+      .then(function(affectedRows){
+        if(affectedRows == 1)
+          res.send({'error': false});
+        else
+          res.send({'error': true});
+      })
+      .catch(function(){
+        res.send({'error': true});
+      })
   })
 
 });
