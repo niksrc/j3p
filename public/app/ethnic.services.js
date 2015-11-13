@@ -33,11 +33,9 @@
     }
 
     function edit(id, params){
-      if(params.file === undefined)
+      if(typeof params.pic === 'string' || params.pic === null)
         return http
-          .post(apiUrl+id,{
-            data: params
-          });
+          .post(apiUrl+id,params);
       else
         return Upload
           .upload({
