@@ -245,7 +245,7 @@ small screens.
 }
 
 .catalog-image{
-    max-height: 400px;
+    /*max-height: 400px;*/
 }
 
 .catalog-content p{
@@ -263,6 +263,13 @@ small screens.
     display: inline;
     margin: 2px;
 }
+
+.catalog-action a{
+    text-decoration: none;
+    color:inherit;
+    cursor: pointer;
+}
+
 
 .text-center {
     text-align: center;
