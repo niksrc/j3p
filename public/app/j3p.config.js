@@ -28,14 +28,19 @@
           controller: 'EthnicEditController',
           controllerAs: 'vm'    
         })
-        .when('/men',{
-          templateUrl: 'app/views/men.html',
-          controller: 'MenController',
+        .when('/mens',{
+          templateUrl: 'app/views/mens.html',
+          controller: 'MensController',
           controllerAs: 'vm'    
         })
-        .when('/women',{
-          templateUrl: 'app/views/women.html',
-          controller: 'WomenController',
+        .when('/mens/new',{
+          templateUrl: 'app/views/mensNew.html',
+          controller: 'MensNewController',
+          controllerAs: 'vm'    
+        })
+        .when('/mens/:id/edit',{
+          templateUrl: 'app/views/mensEdit.html',
+          controller: 'MensEditController',
           controllerAs: 'vm'    
         })
         .otherwise({
