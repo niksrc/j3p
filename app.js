@@ -10,6 +10,11 @@ require('dotenv').load();
 var routes = require('./routes/index');
 var users = require('./routes/users');
 var ethnic = require('./routes/ethnic');
+var mens = require('./routes/mens');
+var womens = require('./routes/womens');
+var about = require('./routes/about');
+var contact = require('./routes/contact');
+var slider = require('./routes/slider');
 
 var app = express();
 
@@ -28,6 +33,11 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use('/', routes);
 app.use('/users', users);
 app.use('/api/ethnic', ethnic);
+app.use('/api/mens', mens);
+app.use('/api/womens', womens);
+app.use('/api/about', about);
+app.use('/api/contact', contact);
+app.use('/api/slider', slider);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
