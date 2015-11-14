@@ -1,0 +1,16 @@
+<div class="pure-g">
+   <div class="pure-u-1-1" ng-repeat="item in vm.items">
+        
+        <img draggable="false" class="pure-img-responsive" ng-src="/images/contact/{{item.data.pic}}">
+
+        <p style="white-space:pre-line;">  
+        Email: {{item.data.email}}
+        Tel:  {{item.data.tel}}
+        Address: {{item.data.address}}
+        </p>
+
+        <a ng-href="#/contact/{{item.id}}/edit" class="pure-button">Edit</a> 
+        
+   </div>     
+
+</div>
