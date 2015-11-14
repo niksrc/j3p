@@ -95,16 +95,17 @@ appears on the left side of the page.
     All anchors inside the menu should be styled like this.
     */
     #menu a {
-        color: #999;
+        color: #888;
         text-decoration: none;
-        text-align: center;
+        text-align: right;
         padding: 0.6em;
-        display: inline-block;
+        display: block;
     }
 
     #menu li{
         list-style-type: none;
         display: block;
+        border-bottom: 1px solid #999;
     }
 
     /*
@@ -131,19 +132,13 @@ appears on the left side of the page.
             background: #333;
         }
 
+    
     /*
-    This styles the selected menu item `<li>`.
+    This styles a link within a selected menu item `<li>`.
     */
-    #menu .pure-menu-selected,
-    #menu .pure-menu-heading {
-        background: #1f8dd6;
+    #menu .pure-menu-selected a {
+        color: #fff;
     }
-        /*
-        This styles a link within a selected menu item `<li>`.
-        */
-        #menu .pure-menu-selected a {
-            color: #fff;
-        }
 
     /*
     This styles the menu heading.
@@ -154,6 +149,7 @@ appears on the left side of the page.
         display: block;
         padding: 1.2em;
         margin: 0em;
+        background: #999;
     }
 
 /* -- Dynamic Button For Responsive Menu -------------------------------------*/
