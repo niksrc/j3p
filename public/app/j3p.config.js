@@ -58,6 +58,21 @@
           controller: 'WomensEditController',
           controllerAs: 'vm'    
         })
+        .when('/slider',{
+          templateUrl: 'app/views/slider.html',
+          controller: 'SliderController',
+          controllerAs: 'vm'    
+        })
+        .when('/slider/new',{
+          templateUrl: 'app/views/sliderNew.html',
+          controller: 'SliderNewController',
+          controllerAs: 'vm'    
+        })
+        .when('/slider/:id/edit',{
+          templateUrl: 'app/views/sliderEdit.html',
+          controller: 'SliderEditController',
+          controllerAs: 'vm'    
+        })
         .otherwise({
           redirectTo: '/'
         })
