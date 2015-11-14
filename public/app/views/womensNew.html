@@ -1,0 +1,30 @@
+<div class="pure-g">
+   <div class="pure-u-1-1">
+    <form class="pure-form pure-g pure-form-aligned" ng-submit="vm.save()">
+    
+      <div class="pure-control-group pure-u-1-1">
+        <label> Picture </label>
+        <input type="file" class="pure-input-1-2" ngf-select data-ng-model="vm.item.pic" name="pic">
+      </div>
+
+      <div class="pure-control-group pure-u-1-1">
+        <label> Title </label>
+        <input type="text" class="pure-input-1-2" data-ng-model="vm.item.title" placeholder="E.g. cotton shirt">
+      </div>
+
+      <div class="pure-control-group pure-u-1-1">      
+        <label> Description </label>
+        <textarea rows="8" class="pure-input-1-2" type="text" data-ng-model="vm.item.data.description" placeholder="How wonderful the shirt is?"></textarea>  
+      </div>
+
+      <div class="pure-controls pure-u-1-1">
+        <input type="submit" class="pure-button pure-button-primary" name="submit">          
+        <a href="#/womens" class="pure-button">Go back</a>          
+
+      </div>
+
+    </form>      
+   </div>
+   
+</div>
+

@@ -43,6 +43,21 @@
           controller: 'MensEditController',
           controllerAs: 'vm'    
         })
+        .when('/womens',{
+          templateUrl: 'app/views/womens.html',
+          controller: 'WomensController',
+          controllerAs: 'vm'    
+        })
+        .when('/womens/new',{
+          templateUrl: 'app/views/womensNew.html',
+          controller: 'WomensNewController',
+          controllerAs: 'vm'    
+        })
+        .when('/womens/:id/edit',{
+          templateUrl: 'app/views/womensEdit.html',
+          controller: 'WomensEditController',
+          controllerAs: 'vm'    
+        })
         .otherwise({
           redirectTo: '/'
         })
