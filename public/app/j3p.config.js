@@ -73,6 +73,26 @@
           controller: 'SliderEditController',
           controllerAs: 'vm'    
         })
+        .when('/about',{
+          templateUrl: 'app/views/about.html',
+          controller: 'AboutController',
+          controllerAs: 'vm'    
+        })
+        .when('/about/:id/edit',{
+          templateUrl: 'app/views/aboutEdit.html',
+          controller: 'AboutEditController',
+          controllerAs: 'vm'    
+        })
+        .when('/contact',{
+          templateUrl: 'app/views/contact.html',
+          controller: 'ContactController',
+          controllerAs: 'vm'    
+        })
+        .when('/contact/:id/edit',{
+          templateUrl: 'app/views/contactEdit.html',
+          controller: 'ContactEditController',
+          controllerAs: 'vm'    
+        })
         .otherwise({
           redirectTo: '/'
         })
