@@ -1,7 +1,23 @@
 var express = require('express');
+var multer = require('multer')
 var Contact = require('../models/contact');
+var crypto = require('crypto');
+var mime = require('mime');
 var router = express.Router();
+var fs = require('fs');
+/* Multer config */
+var storage = multer.diskStorage({
+  destination: function (req, file, cb) {
+    cb(null, 'public/images/contact/')
+  },
+  filename: function (req, file, cb) {
+    crypto.pseudoRandomBytes(16, function (err, raw) {
+      cb(null, raw.toString('hex') + Date.now() + '.' + mime.extension(file.mimetype));
+    });
+  }
+})
 
+var upload = multer({ storage: storage })
 /*
 * These routes are for content in Contact page.
 *
@@ -34,11 +50,18 @@ router.get('/items/:id', function(req, res, next) {
     res.end();
 });
 
-router.post('/items/:id', function(req, res, next) {
+router.post('/items/:id', upload.single('data.pic') , function(req, res, next) {
   var id = req.params.id;
-
+  console.log(req.body);
   Contact.findById(id)
-  .then(function(item){    
+  .then(function(item){
+      if(req.file !== undefined){
+        req.body['data.pic'] = req.file.filename;
+        fs.unlink('public/images/contact/'+item.pic,function(err){
+          console.log(err);
+        });
+      }
+    
       Contact.update(req.body,{
         where:{
           id:item.id
