@@ -81,13 +81,13 @@ appears on the left side of the page.
 
 #menu {
     margin-left: -150px; /* "#menu" width */
-    width: 150px;
+    width: 180px;
     position: fixed;
     top: 0;
     left: 0;
     bottom: 0;
     z-index: 1000; /* so the menu or its navicon stays above all content */
-    background: #191818;
+    background: #fff;
     overflow-y: auto;
     -webkit-overflow-scrolling: touch;
 }
@@ -105,7 +105,7 @@ appears on the left side of the page.
     #menu li{
         list-style-type: none;
         display: block;
-        border-bottom: 1px solid #999;
+        border-bottom:4px solid #fef; 
     }
 
     /*
@@ -129,7 +129,7 @@ appears on the left side of the page.
         */
         #menu .pure-menu li:hover,
         #menu .pure-menu li:focus {
-            background: #333;
+            background: #fef;
         }
 
     
@@ -145,11 +145,11 @@ appears on the left side of the page.
     */
     #menu .pure-menu-heading {
         font-size: 110%;
-        color: #fff;
+        color: #f1f1f1;
         display: block;
         padding: 1.2em;
         margin: 0em;
-        background: #999;
+        background: #0078E7;
     }
 
 /* -- Dynamic Button For Responsive Menu -------------------------------------*/
