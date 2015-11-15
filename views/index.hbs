@@ -1,2 +1,33 @@
-<h1>{{title}}</h1>
-<p>Welcome to {{title}}</p>
+    <div class="container">
+        <div id="myCarousel" class="carousel slide" data-interval="5000" data-ride="carousel">
+            <!-- Indicators -->
+            <ol class="carousel-indicators">
+                <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
+                <li data-target="#myCarousel" data-slide-to="1"></li>
+                <li data-target="#myCarousel" data-slide-to="2"></li>
+            </ol>
+            <div class="carousel-inner" >
+                <div class="item active">
+                    <img src="images/slider/{{first.pic}}" width='100%'>
+
+                </div>
+                {{#each items}}
+                <div class="item">
+                    <img src="images/slider/{{this.pic}}" width='100%'>
+                </div>
+                {{/each}}
+
+            </div>
+            <!-- Controls -->
+            <a class="left carousel-control" href="#myCarousel" role="button" data-slide="prev"  onclick="$('#myCarousel').carousel('prev')">
+                <span class="icon-prev"></span>
+            </a>
+            <a class="right carousel-control" href="#myCarousel" role="button" data-slide="next" onclick="$('#myCarousel').carousel('next')">
+                <span class="icon-next"></span>
+            </a>  
+        </div>
+        <br>
+        <p class="right">Copyright &copy; <a href="/">Just3Preety.com</a>
+        </p>
+
+        </div>

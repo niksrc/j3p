@@ -10,7 +10,13 @@ var Contact = require('../models/contact');
 
 /* GET home page. */
 router.get('/', function(req, res, next) {
-  res.render('index', { title: 'Express' });
+  Slider.findAll({
+    order:[['order', 'DESC']]
+  })
+  .then(function(items){
+    var first = items.splice(1);
+    res.render('index', { first: first[0], items:items});
+  })
 });
 
 router.get('/about', function(req, res, next) {
