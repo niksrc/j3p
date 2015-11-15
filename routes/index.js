@@ -14,8 +14,43 @@ router.get('/', function(req, res, next) {
     order:[['order', 'DESC']]
   })
   .then(function(items){
-    var first = items.splice(1);
-    res.render('index', { first: first[0], items:items});
+    res.render('index', { items:items});
+  })
+});
+
+router.get('/men', function(req, res, next) {
+  var title = "Catalog for Men";
+  var dir = "/images/mens/";
+
+  Mens.findAll({
+    order:[['order', 'DESC']]
+  })
+  .then(function(items){
+    res.render('catalog', {title: title, dir: dir, items:items});
+  })
+});
+
+router.get('/women', function(req, res, next) {
+  var title = "Catalog for Women";
+  var dir = "/images/womens/";
+
+  Womens.findAll({
+    order:[['order', 'DESC']]
+  })
+  .then(function(items){
+    res.render('catalog', {title: title, dir: dir, items:items});
+  })
+});
+
+router.get('/ethnique', function(req, res, next) {
+  var title = "Ethnique Creations";
+  var dir = "/images/ethnic/";
+
+  Ethnic.findAll({
+    order:[['order', 'DESC']]
+  })
+  .then(function(items){
+    res.render('catalog', {title: title, dir: dir, items:items});
   })
 });
 
