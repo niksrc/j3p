@@ -13,7 +13,6 @@ router.get('/', function(req, res, next) {
   res.render('index', { title: 'Express' });
 });
 
-/* GET home page. */
 router.get('/about', function(req, res, next) {
   About.findAll({
     limit: 1
@@ -29,6 +28,15 @@ router.get('/about', function(req, res, next) {
     .then(function(contact){
       res.render('about',{about: about,contact: contact[0]});
     })
+  })
+});
+
+router.get('/contact', function(req, res, next) {
+  Contact.findAll({
+    limit: 1
+  })
+  .then(function(contact){
+    res.render('contact',{contact: contact[0]});
   })
 });
 
