@@ -7,6 +7,7 @@ var Womens = require('../models/womens');
 var Slider = require('../models/slider');
 var About = require('../models/about');
 var Contact = require('../models/contact');
+var auth = require('../lib/auth');
 
 /* GET home page. */
 router.get('/', function(req, res, next) {
@@ -81,8 +82,13 @@ router.get('/contact', function(req, res, next) {
   })
 });
 
-router.get('/admin', function(req, res, next) {
+router.get('/admin', auth, function(req, res, next) {
   res.sendFile('index.html',{root:'public/app/'});
+});
+
+router.get('/logout', function (req, res, next) {
+    res.set('WWW-Authenticate', 'Basic realm=Authorization Required');
+    return res.sendStatus(401);
 });
 
 module.exports = router;
