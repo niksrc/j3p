@@ -93,6 +93,36 @@
           controller: 'ContactEditController',
           controllerAs: 'vm'    
         })
+        .when('/cafe',{
+          templateUrl: 'app/views/cafe.html',
+          controller: 'CafeController',
+          controllerAs: 'vm'    
+        })
+        .when('/cafe/new',{
+          templateUrl: 'app/views/cafeNew.html',
+          controller: 'CafeNewController',
+          controllerAs: 'vm'    
+        })
+        .when('/cafe/:id/edit',{
+          templateUrl: 'app/views/cafeEdit.html',
+          controller: 'CafeEditController',
+          controllerAs: 'vm'    
+        })
+        .when('/csr',{
+          templateUrl: 'app/views/csr.html',
+          controller: 'CsrController',
+          controllerAs: 'vm'    
+        })
+        .when('/csr/new',{
+          templateUrl: 'app/views/csrNew.html',
+          controller: 'CsrNewController',
+          controllerAs: 'vm'    
+        })
+        .when('/csr/:id/edit',{
+          templateUrl: 'app/views/csrEdit.html',
+          controller: 'CsrEditController',
+          controllerAs: 'vm'    
+        })
         .otherwise({
           redirectTo: '/'
         })
