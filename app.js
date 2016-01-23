@@ -15,6 +15,8 @@ var womens = require('./routes/womens');
 var about = require('./routes/about');
 var contact = require('./routes/contact');
 var slider = require('./routes/slider');
+var cafe = require('./routes/cafe');
+var csr = require('./routes/csr');
 
 var app = express();
 
@@ -38,6 +40,8 @@ app.use('/api/womens', womens);
 app.use('/api/about', about);
 app.use('/api/contact', contact);
 app.use('/api/slider', slider);
+app.use('/api/cafe', cafe);
+app.use('/api/csr', csr);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
