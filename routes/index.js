@@ -7,6 +7,8 @@ var Womens = require('../models/womens');
 var Slider = require('../models/slider');
 var About = require('../models/about');
 var Contact = require('../models/contact');
+var Csr = require('../models/csr');
+var Cafe = require('../models/cafe');
 var auth = require('../lib/auth');
 
 /* GET home page. */
@@ -48,6 +50,30 @@ router.get('/ethnique', function(req, res, next) {
   var dir = "/images/ethnic/";
 
   Ethnic.findAll({
+    order:[['order', 'DESC']]
+  })
+  .then(function(items){
+    res.render('catalog', {title: title, dir: dir, items:items});
+  })
+});
+
+router.get('/cafe', function(req, res, next) {
+  var title = "Cafe";
+  var dir = "/images/cafe/";
+
+  Cafe.findAll({
+    order:[['order', 'DESC']]
+  })
+  .then(function(items){
+    res.render('catalog', {title: title, dir: dir, items:items});
+  })
+});
+
+router.get('/happiness', function(req, res, next) {
+  var title = "Spread happiness";
+  var dir = "/images/csr/";
+
+  Csr.findAll({
     order:[['order', 'DESC']]
   })
   .then(function(items){
